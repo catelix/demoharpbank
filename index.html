@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harp Bank - Welcome Vitor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="harp-logo.svg" alt="Harp Bank Logo">
+                <span class="logo-text">Harp Bank</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                    <li><a href="#"><i class="fas fa-wallet"></i> <span>Accounts</span></a></li>
+                    <li><a href="#"><i class="fas fa-exchange-alt"></i> <span>Payments</span></a></li>
+                    <li><a href="#"><i class="fas fa-tag"></i> <span>Products</span></a></li>
+                    <li><a href="#"><i class="fas fa-headset"></i> <span>Support</span></a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <a href="#" class="notifications"><i class="fas fa-bell"></i></a>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <h1>Welcome, Vitor</h1>
+                    <p>Last login: Today, 10:15 AM</p>
+                </div>
+                <div class="quick-actions">
+                    <a href="#" class="action-btn"><i class="fas fa-file-invoice"></i> Pay a Bill</a>
+                    <a href="#" class="action-btn"><i class="fas fa-exchange-alt"></i> Transfer Money</a>
+                    <a href="#" id="insurance-btn" class="action-btn" onclick="toggleChatbot()"><i class="fas fa-comments"></i> Chat About Insurance</a>
+                </div>
+            </div>
+
+            <!-- Insurance Alert Banner -->
+            <div class="insurance-alert">
+                <div class="alert-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="alert-content">
+                    <p>Vitor, your Ford Fiesta insurance expires 13/03/2025!</p>
+                </div>
+                <button class="renew-btn" onclick="toggleChatbot()">Renew Now</button>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Accounts Overview -->
+                <div class="accounts-overview">
+                    <div class="section-header">
+                        <h2>Accounts Overview</h2>
+                        <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="account-card">
+                        <div class="account-info">
+                            <h3>Current Account</h3>
+                            <span class="account-number">**** 5678</span>
+                        </div>
+                        <div class="balance">
+                            <div class="balance-amount">€5,432.19</div>
+                            <div class="balance-label">Available Balance</div>
+                        </div>
+                    </div>
+                    <div class="account-card">
+                        <div class="account-info">
+                            <h3>Savings Account</h3>
+                            <span class="account-number">**** 9012</span>
+                        </div>
+                        <div class="balance">
+                            <div class="balance-amount">€12,750.00</div>
+                            <div class="balance-label">Available Balance</div>
+                        </div>
+                    </div>
+                    <div class="account-activity">
+                        <h3>Spending Breakdown</h3>
+                        <div class="chart-container">
+                            <canvas id="spendingChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="recent-transactions">
+                    <div class="section-header">
+                        <h2>Recent Transactions</h2>
+                        <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="transaction-list">
+                        <div class="transaction-item">
+                            <div class="transaction-icon debit">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h4>Supermarket</h4>
+                                <span class="transaction-date">20/03/2025</span>
+                            </div>
+                            <div class="transaction-amount debit">-€45.20</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon debit">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h4>Car Insurance</h4>
+                                <span class="transaction-date">15/03/2025</span>
+                            </div>
+                            <div class="transaction-amount debit">-€50.00</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon debit">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h4>Utility Bill</h4>
+                                <span class="transaction-date">10/03/2025</span>
+                            </div>
+                            <div class="transaction-amount debit">-€72.50</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon credit">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <h4>Salary Deposit</h4>
+                                <span class="transaction-date">01/03/2025</span>
+                            </div>
+                            <div class="transaction-amount credit">+€2,450.00</div>
+                        </div>
+                    </div>
+                    <div class="account-activity">
+                        <h3>Account Activity</h3>
+                        <div class="chart-container">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="products-section">
+                <div class="section-header">
+                    <h2>Products and Services</h2>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn" data-tab="loans">Loans</button>
+                    <button class="tab-btn active" data-tab="insurance">Insurance</button>
+                    <button class="tab-btn" data-tab="investments">Investments</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane" id="loans">
+                        <div class="product-cards">
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h3>Home Loans</h3>
+                                <p>Get your dream home with our competitive mortgage rates starting from 3.5% APR.</p>
+                                <div class="product-rate">
+                                    <span class="rate">3.5%</span>
+                                    <span class="rate-label">APR from</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h3>Car Loans</h3>
+                                <p>Finance your new vehicle with flexible repayment options and rates from 4.9% APR.</p>
+                                <div class="product-rate">
+                                    <span class="rate">4.9%</span>
+                                    <span class="rate-label">APR from</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>Education Loans</h3>
+                                <p>Invest in your future with our education loans with deferred payment options.</p>
+                                <div class="product-rate">
+                                    <span class="rate">5.2%</span>
+                                    <span class="rate-label">APR from</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="insurance">
+                        <div class="product-cards">
+                            <div class="product-card highlight">
+                                <div class="product-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h3>Car Insurance</h3>
+                                <p>Renew your car insurance in minutes with Basic or Full plans.</p>
+                                <div class="renewal-banner">
+                                    <p><i class="fas fa-info-circle"></i> Your Ford Fiesta (191-D-123) insurance expires soon!</p>
+                                    <button class="chat-btn" onclick="toggleChatbot()">Chat to Renew</button>
+                                </div>
+                                <a href="#" class="product-link" onclick="toggleChatbot()">Renew Now <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h3>Home Insurance</h3>
+                                <p>Protect your home and belongings with our comprehensive coverage options.</p>
+                                <div class="product-rate">
+                                    <span class="rate">€15</span>
+                                    <span class="rate-label">Monthly from</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <h3>Health Insurance</h3>
+                                <p>Take care of your health with our flexible health insurance plans.</p>
+                                <div class="product-rate">
+                                    <span class="rate">€25</span>
+                                    <span class="rate-label">Monthly from</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="investments">
+                        <div class="product-cards">
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Stocks & Shares</h3>
+                                <p>Invest in the stock market with our easy-to-use trading platform.</p>
+                                <div class="product-rate">
+                                    <span class="rate">€50</span>
+                                    <span class="rate-label">Min. investment</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="product-card highlight">
+                                <div class="product-icon">
+                                    <i class="fas fa-piggy-bank"></i>
+                                </div>
+                                <h3>Savings Plans</h3>
+                                <p>Grow your money with our high-interest savings plans and fixed deposits.</p>
+                                <div class="product-rate">
+                                    <span class="rate">3.2%</span>
+                                    <span class="rate-label">Interest up to</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-icon">
+                                    <i class="fas fa-hand-holding-usd"></i>
+                                </div>
+                                <h3>Pension Funds</h3>
+                                <p>Secure your future with our pension fund options and retirement plans.</p>
+                                <div class="product-rate">
+                                    <span class="rate">€100</span>
+                                    <span class="rate-label">Monthly from</span>
+                                </div>
+                                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>About Harp Bank</h4>
+                    <p>Harp Bank provides financial services to individuals and businesses across Ireland since 1985.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Current Accounts</a></li>
+                        <li><a href="#">Savings</a></li>
+                        <li><a href="#">Loans</a></li>
+                        <li><a href="#">Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Harp Bank. All rights reserved.</p>
+                <p>Harp Bank is regulated by the Central Bank of Ireland.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chat-container">
+        <button class="chat-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+            <span>Chat with us</span>
+        </button>
+        <iframe 
+            class="chatbot-frame" 
+            src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/03/18/20250303181305-1S1BSQJ0.json" 
+            frameborder="0">
+        </iframe>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
